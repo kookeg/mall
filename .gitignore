@@ -2,4 +2,3 @@ vendor/
 storage/
 bootstrap/cache/
 database.php
-

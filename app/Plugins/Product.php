@@ -8,4 +8,8 @@ class Product extends Base
     public function all($params = array()){
         return ProductModel::all(); 
     }
+
+    public function getByName($name){
+        return ProductModel::where('name', trim($name))->firstOrFail();
+    }
 }

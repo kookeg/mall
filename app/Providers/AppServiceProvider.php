@@ -17,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //Datasource 指令
         Blade::directive('DataSource', function($expression){
-            $return = eval('return Helper::plugin' . $expression. ';');
+            $return = eval('return Helper::params' . $expression. ';');
             list($class, $method, $params, $var) = $return;
             $pluginClass = "App\Plugins\\" . $class; 
             if(class_exists($pluginClass)){
@@ -32,8 +32,34 @@ class AppServiceProvider extends ServiceProvider
             }else{
                     throw new Exception('Plugins class' . $pluginClass . ' missing!!!');
             }
-            
         });
+        //判断变量是否存在
+
+        Blade::directive('CheckExist', function($expression){
+            list($var, $type) = eval('return Helper::params' . $expression. ';');
+            return <<<CHECKEXIST
+<?php 
+    $$type = '$type';
+    if(!isset($$var) || !$$var){
+        switch($$type){
+            case 'array':
+                $$var = array();
+                break;
+            case 'int':
+                $$var = 0;
+                break;
+            case 'string':
+                $$var = '';
+                break;
+            default:
+                $$var = '';
+        }
+    }
+?>
+CHECKEXIST;
+        });
+
+
     }
 
     /**

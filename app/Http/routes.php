@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'DefaultController@index')->name('default'); 
+Route::get('product/{name}', 'DefaultController@product')->name('product'); 

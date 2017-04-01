@@ -23,7 +23,7 @@
         </div> 
         <div class="v-list">
             @foreach($products as $product)
-            <a href="/product/{{ $product->name }}" target="_blank">
+            <a href="{{ route('product', ['name' => urlencode($product->name)]) }}" target="_blank">
                 <div class="list">
                     <div class="bg"></div>
                     <div class="box">
@@ -31,7 +31,7 @@
                         <div class="title">{{ $product->name }}</div>
                         <div class="desc">{{ $product->desc }}</div>
                     </div>
-                    <img class="proimg" style="width:320px;height:320px;" src="{{ Helper::image('0cb196de4311e1bb2704.png') }}">
+                    <img class="proimg" style="width:320px;height:320px;" src="{{ $product->logo ? $product->logo : Helper::image('0cb196de4311e1bb2704.png') }}">
                     <div class="procolor"></div>
                     <!--<div class="ns-mt-10 h20">SHUEHO</div>-->
                     <div class="ns-mt-5 h20">{{ $product->name }}</div>

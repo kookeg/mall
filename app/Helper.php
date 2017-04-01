@@ -13,7 +13,7 @@ class Helper
         return Config::get('mall.assets_url') . '/mall/images/' . trim($fileName, '/');   
     }
 
-    static function plugin(){
-        return array_pad(func_get_args(), 4, '');
+    static function params(){
+        return array_pad(func_get_args(), 10, '');
     }
 }

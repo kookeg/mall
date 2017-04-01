@@ -56,7 +56,7 @@
     <div class="title">产品参数</div>
     <hr class="ns-mt-0">
     <div class="attr_list">
-        品名 ：{{ $product->name }} 
+        品名：{{ $product->name }} 
     </div>
     <div class="attr_list">
         产品类型：服务
